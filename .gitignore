@@ -1,0 +1,4 @@
+main.py
+TempMemo.txt
+.venv/
+*__pycache__
