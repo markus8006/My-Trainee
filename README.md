@@ -4,8 +4,6 @@ Assistente virtual personalizavel. Inclui:
 
 - IA com Gemini
 - Voz com pyttsx3
-- Integração com VTube Studio (Bulding)
-- Interface terminal personalizada
 
 ## Instalação
 
@@ -21,13 +19,18 @@ Uso
 
 
 ```python
-from IA import base
+from Trainee import Trainee
 
 
 personalidade = (
     "Coloque a personalidade da sua IA"
 )
-sylph = base.AI("Nome da sua Ia", personalidade, "GOOGLE API KEY")
+NOME = Trainee.Trainee(
+    nome,
+    personalidade,
+    modeloIA,
+    API_KEY,
+)
 sylph.run()
 
 ```
