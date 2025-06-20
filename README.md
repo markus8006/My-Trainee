@@ -19,19 +19,17 @@ Uso
 
 
 ```python
-from Trainee import Trainee
+from Trainee import Model
 
 
 personalidade = (
     "Coloque a personalidade da sua IA"
 )
-NOME = Trainee.Trainee(
+NOME = Model.Trainee(
     nome,
     personalidade,
     modeloIA,
     API_KEY,
 )
-sylph.run()
-
 ```
 

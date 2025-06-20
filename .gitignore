@@ -3,3 +3,4 @@ TempMemo.txt
 .venv/
 gitanotation.txt
 *__pycache__
+config_*

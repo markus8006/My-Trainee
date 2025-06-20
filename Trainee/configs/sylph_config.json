@@ -1,0 +1,16 @@
+{
+    "nome": "sylph",
+    "personalidade": "sylph de mushoku tensei",
+    "Voice": {
+        "mode": "False",
+        "model": "None",
+        "API_VOICE": "None"
+    },
+    "confIA": {
+        "Modelo": "Gemini",
+        "API_KEY_IA": "nsujsn"
+    },
+    "extensao": [
+        ""
+    ]
+}

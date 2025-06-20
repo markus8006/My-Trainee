@@ -3,7 +3,7 @@
 
 #Cria a interface, não necessariamente o usuario vai ver 
 
-class Kernel:
+class NewKernel:
     def __init__(self, name : str) -> None:
         self.name = name
         
