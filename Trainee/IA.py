@@ -14,7 +14,7 @@ def todosModelos() -> list:
 #PARA O GEMINI
 
 #Cria o modelo
-def gerarModeloGemini(api_key, modelo : str = "gemini-1.5-flash") -> bool:
+def gerarModeloGemini(api_key, modelo : str) -> bool:
         global model
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel(modelo)

@@ -7,8 +7,8 @@
         "API_VOICE": "None"
     },
     "confIA": {
-        "Modelo": "Gemini",
-        "API_KEY_IA": "nsujsn"
+        "Modelo": "gemini-1.5-flash",
+        "API_KEY_IA": "AIzaSyB1IO7MstiVOWHzJaLYp9XqwtF6iT4-Iqk"
     },
     "extensao": [
         ""
