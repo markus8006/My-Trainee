@@ -21,10 +21,6 @@ Uso
 ```python
 from Trainee import Model
 
-
-personalidade = (
-    "Coloque a personalidade da sua IA"
-)
 NOME = Model.Trainee(
     nome,
     personalidade,
