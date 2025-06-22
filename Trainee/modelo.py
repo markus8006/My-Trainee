@@ -2,6 +2,9 @@ from Trainee import json_config
 from Trainee import ia
 from Trainee.terminal import kernel
 import asyncio
+from Trainee.memoria import memoria
+
+global seguranca
 
 
 #Classe principal onde vai criar o "Estagiário"
@@ -12,6 +15,7 @@ class Trainee(kernel.Kernel):
         self.personalidade = personalidade
         self.modelo_ia = modelo_ia
         self.api_key = api_key
+        memoria.criar_memoria(self.nome, self.personalidade)
 
         #Precisamos fazer a verificação de modelos depois
         ia.gerar_modelo(api_key, modelo_ia)
@@ -23,10 +27,14 @@ class Trainee(kernel.Kernel):
         
         #Salva suas configurações em um Json
         json_config.criar_json(self.nome, self.personalidade, self.modelo_ia, self.api_key)
+
+
+        
+        
     
 
 
     # Onde ele vai obter a resposta da ia 
     #Precisa separa com um if para cada ia que ele pode usar, por enquanto ta so o gemini ent vai essa mesmo
     def _responder(self, prompt : str):
-        print(ia.obter_resposta(prompt))
+        return ia.obter_resposta(prompt)
