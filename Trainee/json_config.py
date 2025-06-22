@@ -12,7 +12,7 @@ pasta = "Trainee\configs"
 os.makedirs(pasta, exist_ok=True)
 
 #Salvas as conf iniciais
-def criarJson(nome, personalidade, modeloIA, API_KEY):
+def criar_json(nome, personalidade, modeloIA, API_KEY):
     caminho_arquivo = os.path.join(pasta, f"{nome}_config.json")
     configs = {
             'nome' : nome,
@@ -36,5 +36,5 @@ def criarJson(nome, personalidade, modeloIA, API_KEY):
             json.dump(configs, arquivo, indent=4, ensure_ascii=False)
 
 #ler algo das config em relação ao nome (A FAZER)
-def lerConfig(nome : str, config : str) -> str|dict|list:
+def ler_configuracao(nome : str, config : str) -> str|dict|list:
       arquivo = arquivo + '_config.json'

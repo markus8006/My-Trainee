@@ -1,7 +1,7 @@
 import pyttsx3
 
 # Lista com as vozes possiveis 
-voices = {
+voices = [
     "Win"
     "Evenlabs"
-}
+]

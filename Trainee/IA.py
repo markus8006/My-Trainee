@@ -6,7 +6,7 @@ modelos = [
 ]
 
 #Pra mostrar todos os modelos
-def todosModelos() -> list:
+def todos_modelos() -> list:
       return modelos
 
 
@@ -14,13 +14,13 @@ def todosModelos() -> list:
 #PARA O GEMINI
 
 #Cria o modelo
-def gerarModeloGemini(api_key, modelo : str) -> bool:
+def gerar_modelo(api_key, modelo : str) -> bool:
         global model
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel(modelo)
         return True
 
 #Obtem a resposta 
-def getResponseGemini(prompt : str) -> str:
-    response = model.generate_content(prompt)
-    return response.text
+def obter_resposta(prompt : str) -> str:
+    respostas = model.generate_content(prompt)
+    return respostas.text
