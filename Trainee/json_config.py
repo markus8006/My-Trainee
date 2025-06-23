@@ -15,11 +15,13 @@ os.makedirs(pasta, exist_ok=True)
 
 #Salvas as conf iniciais
 def criar_json(nome, personalidade, modeloIA, API_KEY):
+    'Cria o arquivo que será salvo as configurações'
 
+    caminho_arquivo = os.path.join(pasta, f"{nome}_config.json")
     if config.DEBUG:
           log.executando("Criando Json")
 
-    caminho_arquivo = os.path.join(pasta, f"{nome}_config.json")
+    
     configs = {
             'nome' : nome,
             'personalidade' : personalidade,
@@ -47,14 +49,22 @@ def criar_json(nome, personalidade, modeloIA, API_KEY):
                 '',
             ]
         }
-
     with open(caminho_arquivo, "w", encoding="utf-8") as arquivo:
             json.dump(configs, arquivo, indent=4, ensure_ascii=False)
             log.sucess(f"Json salvo em {caminho_arquivo}")
 
 
-#ler algo das config em relação ao nome (A FAZER)
-def ler_configuracao(nome : str, config : str) -> str|dict|list:
-      'extrai o json u alguma informação dele'
 
-      arquivo = arquivo + '_config.json'
+#ler algo das config em relação ao nome 
+def ler_configuracao(modelo : str) -> dict:
+      caminho = f"Trainee/configs/{modelo}_config.json"
+      with open(caminho, 'r', encoding='utf-8') as arquivo:
+            return json.load(arquivo)
+
+def salvar_arquivo(modelo: str, alterações : dict) -> bool:
+    caminho = f"Trainee/configs/{modelo}_config.json"
+    with open(caminho, 'w', encoding='utf-8') as arquivo:
+          json.dump(caminho, alterações, indent=4, ensure_ascii=False)
+          return True
+      
+
