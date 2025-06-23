@@ -61,10 +61,10 @@ def ler_configuracao(modelo : str) -> dict:
       with open(caminho, 'r', encoding='utf-8') as arquivo:
             return json.load(arquivo)
 
-def salvar_arquivo(modelo: str, alterações : dict) -> bool:
+def salvar_arquivo(modelo: str, alteracoes: dict) -> bool:
     caminho = f"Trainee/configs/{modelo}_config.json"
     with open(caminho, 'w', encoding='utf-8') as arquivo:
-          json.dump(caminho, alterações, indent=4, ensure_ascii=False)
-          return True
+        json.dump(alteracoes, arquivo, indent=4, ensure_ascii=False)
+    return True
       
 
