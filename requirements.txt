@@ -1,3 +1,6 @@
 pyttsx3
 google-generativeai
 colorama
+elevenlabs
+numpy 
+sounddevice 
