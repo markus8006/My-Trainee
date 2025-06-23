@@ -2,14 +2,14 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
-def erro(msg : str) -> str:
+def erro(msg : str):
     msg = Fore.RED + msg
-    return msg
+    print(msg)
 
-def executando(msg : str) -> str:
+def executando(msg : str):
     msg = Fore.YELLOW + msg
-    return msg
+    print(msg)
 
-def sucess(msg : str) -> str:
+def sucess(msg : str):
     msg = Fore.GREEN + msg
-    return msg
+    print(msg)

@@ -40,7 +40,7 @@ def criar_json(nome, personalidade, modeloIA, API_KEY):
 
     with open(caminho_arquivo, "w", encoding="utf-8") as arquivo:
             json.dump(configs, arquivo, indent=4, ensure_ascii=False)
-            log.executando(f"Json salvo em {caminho_arquivo}")
+            log.sucess(f"Json salvo em {caminho_arquivo}")
 
 
 #ler algo das config em relação ao nome (A FAZER)
