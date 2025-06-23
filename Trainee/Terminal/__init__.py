@@ -1,1 +1,2 @@
-from . import kernel, log
+from .. import log
+from . import kernel

@@ -2,7 +2,7 @@
 #IMPORTANTE salvar nesta pasta
 
 from Trainee import config
-from Trainee.terminal import log
+from Trainee import log
 import os
 
 import json
@@ -23,17 +23,27 @@ def criar_json(nome, personalidade, modeloIA, API_KEY):
     configs = {
             'nome' : nome,
             'personalidade' : personalidade,
-            'Voice' : {
+
+
+            'Voice' : 
+            {
                 'mode' : "False",
                 'model' : "None",
                 'API_VOICE' : "None"
             },
-            'confIA' : {
+
+
+            'confIA' : 
+            
+            {
                 'Modelo' : modeloIA,
                 'API_KEY_IA' : API_KEY
 
-            },    
-            'extensao' : [
+            },  
+
+
+            'extensao' : 
+            [
                 '',
             ]
         }

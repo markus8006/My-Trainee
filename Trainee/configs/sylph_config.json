@@ -3,8 +3,8 @@
     "personalidade": "sylph de mushoku tensei",
     "Voice": {
         "mode": "False",
-        "model": "None",
-        "API_VOICE": "None"
+        "model": "Elevenlabs",
+        "API_VOICE": "sk_bd18c8c354e00fa97b3b6f141824a8e5ba9f61caa93fcff7"
     },
     "confIA": {
         "Modelo": "gemini-1.5-flash",

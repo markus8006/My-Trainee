@@ -1,4 +1,4 @@
-from . import log
+from Trainee import log
 import os
 
 

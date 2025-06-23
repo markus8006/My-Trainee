@@ -3,7 +3,7 @@ from Trainee import ia
 from Trainee import vozes
 from Trainee import config
 from Trainee.terminal import kernel
-from Trainee.terminal import log
+from Trainee import log
 import asyncio
 from Trainee.memoria import memoria
 
@@ -53,7 +53,7 @@ class Trainee(kernel.Kernel):
             log.executando("mandando configurar a voz...")
             
         if modelo == 'Elevenlabs':
-            vozes.adicionar_api_elevenlabs(api)
+            vozes.configurar_elevenlabs(api, self.nome)
             if config.DEBUG:
                 vozes.falar("Teste funcionando")
                 log.sucess("Voz configurada")

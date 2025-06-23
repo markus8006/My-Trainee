@@ -1,11 +1,12 @@
 import pyttsx3
 import sounddevice as sd
 import numpy as np
+import json
 
 from Trainee import config
 
-from Trainee.terminal import log
-from elevenlabs import ElevenLabs, play
+from Trainee import log
+from elevenlabs import ElevenLabs
 
 
 # Lista com as vozes possiveis 
@@ -14,14 +15,30 @@ voices = [
     "Elevenlabs"
 ]
 
-def adicionar_api_elevenlabs(api):
+def configurar_elevenlabs(api, nome):
+    'configura os elementos do elevenlabs'
+
     global client
+    if config.DEBUG:
+        log.executando("Criando cliente Elevenlabs...")
     client = ElevenLabs(api_key=api)
+    if config.DEBUG:
+        log.sucess("Client criado")
+        log.executando("Salvando mudanças")
 
-from elevenlabs import ElevenLabs, play
+    caminho = f"Trainee/configs/{nome}_config.json"
 
-# Cria o cliente com sua API
-client = ElevenLabs(api_key="SUA_API_KEY")
+    with open(caminho, "r", encoding="utf-8") as arquivo:
+        arquivo = json.load(arquivo)
+        arquivo['Voice']['model'] = "Elevenlabs"
+        arquivo["Voice"]['API_VOICE'] = api
+        with open(caminho, "w", encoding="utf-8") as f:
+            json.dump(arquivo, f, indent=4, ensure_ascii=False)
+            if config.DEBUG:
+                log.sucess("Alteações salvas")
+
+    
+
 
 def falar(texto: str):
     'usa a fala em audio'

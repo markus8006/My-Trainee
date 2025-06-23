@@ -1,7 +1,7 @@
 import google.generativeai as genai
 
 from Trainee import config
-from Trainee.terminal import log
+from Trainee import log
 
 #Todos os modelos que o usuario pode ter
 modelos = [
