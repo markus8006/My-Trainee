@@ -2,9 +2,11 @@
     "nome": "sylph",
     "personalidade": "sylph de mushoku tensei",
     "Voice": {
-        "mode": "False",
+        "mode": false,
         "model": "Elevenlabs",
-        "API_VOICE": "sk_bd18c8c354e00fa97b3b6f141824a8e5ba9f61caa93fcff7"
+        "API_ELEVEN": "sk_bd18c8c354e00fa97b3b6f141824a8e5ba9f61caa93fcff7",
+        "voice_id": "qbzdNKUUxcKHZ1WhQ7eX",
+        "modelo_id": "eleven_multilingual_v2"
     },
     "confIA": {
         "Modelo": "gemini-1.5-flash",

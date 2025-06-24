@@ -12,7 +12,7 @@ global seguranca
 
 #Classe principal onde vai criar o "Estagiário"
 #Essa classe recebe todas as funções de Kernel
-class Trainee(kernel.Kernel):
+class Trainee(kernel.Kernel, vozes.Voices):
     'Classe onde tudo será feito, seria a classe principal'
     def __init__(self, nome : str, personalidade : str, api_key : str, modelo_ia : str = 'gemini-1.5-flash'):
         self.nome = nome
@@ -24,8 +24,10 @@ class Trainee(kernel.Kernel):
         #Precisamos fazer a verificação de modelos depois
         ia.gerar_modelo(api_key, modelo_ia)
 
-        #Atribui oq precisa no Kernel
-        super().__init__(self.nome)
+        #Atribui oq precisa no Kernel e as vozes
+        kernel.Kernel.__init__(self, self.nome)
+        vozes.Voices.__init__(self, self.nome)
+
 
 
         
@@ -53,8 +55,8 @@ class Trainee(kernel.Kernel):
             log.executando("mandando configurar a voz...")
             
         if modelo == 'Elevenlabs':
-            vozes.configurar_elevenlabs(api, self.nome)
+            self.configurar_elevenlabs(api)
             if config.DEBUG:
-                vozes.falar("Teste funcionando")
+                self.falar("Teste funcionando")
                 log.sucess("Voz configurada")
 

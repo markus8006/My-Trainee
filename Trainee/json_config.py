@@ -29,9 +29,11 @@ def criar_json(nome, personalidade, modeloIA, API_KEY):
 
             'Voice' : 
             {
-                'mode' : "False",
-                'model' : "None",
-                'API_VOICE' : "None"
+                'mode' : False,
+                'model' : None,
+                'API_ELEVEN' : None,
+                'voice_id' : None,
+                'modelo_id' : None
             },
 
 

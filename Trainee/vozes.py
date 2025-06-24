@@ -19,18 +19,24 @@ voices = [
 class Voices:
 
     def __init__(self, nome):
+        if config.DEBUG:
+            log.executando("Iiniciando classe voices")
         self.nome = nome
         self.config = json_config.ler_configuracao(nome)
-        self.modelo = self.config["Voices"]['model']
-        self.api = self.config["Voices"]["API_VOICE"]
+        self.modelo = self.config["Voice"]['model']
+        self.api = self.config["Voice"]["API_ELEVEN"]
         self.engine = None
         self.client = None
+        
 
         if self.modelo in voices:
             if self.modelo == 'Win':
                 pass
             elif self.modelo == 'Elevenlabs':
-                pass
+                self._init_elevenlabs()
+                self.configurar_elevenlabs()
+        if config.DEBUG:
+            log.sucess("classe voices iniciada")
     
 
     def _init_elevenlabs(self):
@@ -48,10 +54,16 @@ class Voices:
                               model_id = "eleven_multilingual_v2"):
         
         'configura os elementos do elevenlabs'
+
+
+        self.voice_id = voice_id
+        self.model_id = model_id
         self.api = nova_api
         self.client = ElevenLabs(api_key=nova_api)
         self.config['Voice']['model'] = "Elevenlabs"
-        self.config['Voice']['API_VOICE'] = nova_api
+        self.config['Voice']['API_ELEVEN'] = self.api
+        self.config['Voice']['voice_id'] = self.voice_id
+        self.config['Voice']['modelo_id'] = self.model_id
         json_config.salvar_arquivo(self.nome, self.config)
         if config.DEBUG:
             log.sucess("Nova configuração salva")
@@ -60,13 +72,12 @@ class Voices:
 
 
     def falar(self, texto: str):
-
-        if self.modo == "Win":
+        if self.modelo == "Win":
             self.engine.say(texto)
             self.engine.runAndWait()
 
 
-        elif self.modo == "Elevenlabs":
+        elif self.modelo == "Elevenlabs":
             
 
             audio_array = self._run_audio_elevenlabs(texto)
@@ -91,8 +102,8 @@ class Voices:
         audio = b''.join(
             self.client.text_to_speech.convert(
             text=texto,
-            voice_id="qbzdNKUUxcKHZ1WhQ7eX",
-            model_id="eleven_multilingual_v2",
+            voice_id=self.voice_id,
+            model_id=self.model_id,
             output_format="pcm_22050",
                 )
             )
