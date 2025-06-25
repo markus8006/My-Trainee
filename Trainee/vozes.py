@@ -1,8 +1,8 @@
 import pyttsx3
 import sounddevice as sd
 import numpy as np
-import json
 from elevenlabs import ElevenLabs
+import asyncio
 
 from Trainee import config
 from Trainee import log
@@ -59,33 +59,36 @@ class Voices:
         self.voice_id = voice_id
         self.model_id = model_id
         self.api = nova_api
-        self.client = ElevenLabs(api_key=nova_api)
         self.config['Voice']['model'] = "Elevenlabs"
         self.config['Voice']['API_ELEVEN'] = self.api
         self.config['Voice']['voice_id'] = self.voice_id
         self.config['Voice']['modelo_id'] = self.model_id
         json_config.salvar_arquivo(self.nome, self.config)
+        self.client = ElevenLabs(api_key=self.api)
         if config.DEBUG:
             log.sucess("Nova configuração salva")
        
     
 
 
-    def falar(self, texto: str):
+    async def falar(self, texto: str):
         if self.modelo == "Win":
-            self.engine.say(texto)
-            self.engine.runAndWait()
-
+            loop = asyncio.get_running_loop()
+            await loop.run_in_executor(None, self._falar_win, texto)
 
         elif self.modelo == "Elevenlabs":
-            
-
             audio_array = self._run_audio_elevenlabs(texto)
             sd.play(audio_array, samplerate=22050)
-            sd.wait()
+            await asyncio.sleep(len(audio_array) / 22050)
 
             if config.DEBUG:
                 log.sucess("Áudio reproduzido.")
+
+    def _falar_win(self, texto):    
+        self.engine.say(texto)
+        self.engine.runAndWait()
+
+        
 
 
 

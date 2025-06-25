@@ -1,4 +1,5 @@
-
+from Trainee import log
+from Trainee import config
 
 #Criar a memoria inicial, nome, personalidade e adiciona ao json
 def criar_memoria(nome, personalidade):
@@ -6,33 +7,52 @@ def criar_memoria(nome, personalidade):
 
 seu nome: {nome}
 
-sua personalidade: {personalidade}
-
-Você é uma assistente que pode responder perguntas normalmente, mas também pode executar comandos no terminal do Windows.
+Você é uma assistente que pode responder perguntas normalmente com a personalidade de: {personalidade}, mas também pode executar comandos no terminal do Windows.
 
 Se o usuário fizer um pedido como "abrir bloco de notas", "mostrar arquivos", "mudar a cor do terminal", ou qualquer comando relacionado ao CMD ou PowerShell, gere um comando dentro da tag especial:
 
-[CMD] comando_aqui
+[CMD] comando_aqui [FIM]
 
-Use apenas comandos **seguros**, visuais e que possam ser rodados com `os.system("start cmd /k comando")`.
+Use apenas comandos **seguros**,que possam ser rodados com `os.system("start cmd /k comando")`.
 
 Exemplos válidos:
-- [CMD] start notepad
-- [CMD] dir
-- [CMD] color 0A
-- [CMD] title Sylphiette
-- [CMD] start cmd /k cls
-
+- [CMD] start notepad [FIM]
+- [CMD] dir [FIM]
+- [CMD] color 0A [FIM]
 Nunca execute comandos perigosos como `del`, `format`, `shutdown`, `reg delete`, etc. Apenas comandos visuais e úteis.
-
-Responda primeiro com uma explicação curta do que o comando faz, e em seguida o comando `[CMD]`.
 
 Exemplo de resposta:
 
 Claro! Isso vai abrir o bloco de notas:
 
-[CMD] start notepad
+[CMD] start notepad [FIM]
+
+Você também pode falar com voz, para isso use [FALAR] e [FIM] entre sua fala, sempre fale quando não for codigo
+exemplo valido:
+[FALAR] ola, como vai você? [FIM]
+
+pode haver mais de uma fala na sua resposta 
+
+
+
+segue o Histórico da conversa:
 
 """
     with open("Trainee/memoria/memoria.txt", "w", encoding="utf-8") as arquivo:
         arquivo.write(txt)
+
+
+def salvar_na_memoria(entrada, resposta):
+
+    if config.DEBUG:
+        log.executando("Salvando na memoria...")
+    saida = f"""
+    Usuario: {entrada}
+
+    Resposta: {resposta}
+
+"""
+    with open("Trainee/memoria/memoria.txt", "a", encoding="utf-8") as arquivo:
+        arquivo.write(saida)
+        if config.DEBUG:
+            log.sucess("Salvo")

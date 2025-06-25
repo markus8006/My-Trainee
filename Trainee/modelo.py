@@ -7,8 +7,6 @@ from Trainee import log
 import asyncio
 from Trainee.memoria import memoria
 
-global seguranca
-
 
 #Classe principal onde vai criar o "Estagiário"
 #Essa classe recebe todas as funções de Kernel
@@ -21,6 +19,8 @@ class Trainee(kernel.Kernel, vozes.Voices):
         self.api_key = api_key
         memoria.criar_memoria(self.nome, self.personalidade)
 
+
+        
         #Precisamos fazer a verificação de modelos depois
         ia.gerar_modelo(api_key, modelo_ia)
 
@@ -28,9 +28,6 @@ class Trainee(kernel.Kernel, vozes.Voices):
         kernel.Kernel.__init__(self, self.nome)
         vozes.Voices.__init__(self, self.nome)
 
-
-
-        
         #Salva suas configurações em um Json
         json_config.criar_json(self.nome, self.personalidade, self.modelo_ia, self.api_key)
 
@@ -48,7 +45,7 @@ class Trainee(kernel.Kernel, vozes.Voices):
         
     
     #Esqueci de alterar isso no json e daqui 8min tenho q dormir 
-    def adicionara_voz(self, modelo, api):
+    async def adicionara_voz(self, modelo, api):
         'configura as vozes se for usar'
 
         if config.DEBUG:
@@ -57,6 +54,6 @@ class Trainee(kernel.Kernel, vozes.Voices):
         if modelo == 'Elevenlabs':
             self.configurar_elevenlabs(api)
             if config.DEBUG:
-                self.falar("Teste funcionando")
                 log.sucess("Voz configurada")
+                await self.falar("Teste funcionando")
 
