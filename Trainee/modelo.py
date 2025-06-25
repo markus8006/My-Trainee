@@ -55,5 +55,5 @@ class Trainee(kernel.Kernel, vozes.Voices):
             self.configurar_elevenlabs(api)
             if config.DEBUG:
                 log.sucess("Voz configurada")
-                await self.falar("Teste funcionando")
+        await self.falar("Teste funcionando")
 

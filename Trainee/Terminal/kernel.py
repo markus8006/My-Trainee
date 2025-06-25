@@ -1,6 +1,8 @@
 # kernel.py
 from Trainee import log
 from Trainee.memoria import memoria
+import pygetwindow
+import pyrect
 import os
 import re
 import asyncio
@@ -42,7 +44,6 @@ class Kernel:
         """
 
         tarefas = []
-
         if "[FALAR]" in entrada:
             padrao = r"\[FALAR\](.*?)\[FIM\]"
             trechos = re.findall(padrao, entrada, re.DOTALL)
@@ -55,6 +56,15 @@ class Kernel:
                 cmd_linha = cmd.strip()
                 tarefas.append(self.executar_cmd(cmd_linha))
                 log.sucess(f"Comando executado: {cmd_linha}")
+        if "[WIN]" in entrada:
+            padrao_win = r"\[WIN\](.*?)\[FIM\]"
+            comandos = re.findall(padrao_win, entrada, re.DOTALL)
+            for win in comandos:
+                if "getWindowsWithTitle" in win:
+                    pass
+                    
+                   
+
 
         await asyncio.gather(*tarefas)
 

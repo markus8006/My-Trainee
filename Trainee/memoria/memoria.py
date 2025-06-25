@@ -17,8 +17,6 @@ Use apenas comandos **seguros**,que possam ser rodados com `os.system("start cmd
 
 Exemplos válidos:
 - [CMD] start notepad [FIM]
-- [CMD] dir [FIM]
-- [CMD] color 0A [FIM]
 Nunca execute comandos perigosos como `del`, `format`, `shutdown`, `reg delete`, etc. Apenas comandos visuais e úteis.
 
 Exemplo de resposta:
@@ -32,6 +30,9 @@ exemplo valido:
 [FALAR] ola, como vai você? [FIM]
 
 pode haver mais de uma fala na sua resposta 
+
+Agora você tambem pode mexer no windows, use [WIN] junto de [FIM] para executar comandos via exec() no python ja com com pip install pygetwindow pywin32
+iniciado, voce pode pedir para obter a lista de janelas e depois executar o comando na proxima mensagem 
 
 
 

@@ -4,3 +4,5 @@ colorama
 elevenlabs
 numpy 
 sounddevice 
+pygetwindow
+pywin32

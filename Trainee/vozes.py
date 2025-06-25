@@ -79,10 +79,11 @@ class Voices:
         elif self.modelo == "Elevenlabs":
             audio_array = self._run_audio_elevenlabs(texto)
             sd.play(audio_array, samplerate=22050)
-            await asyncio.sleep(len(audio_array) / 22050)
-
             if config.DEBUG:
                 log.sucess("Áudio reproduzido.")
+            await asyncio.sleep(len(audio_array) / 22050)
+
+            
 
     def _falar_win(self, texto):    
         self.engine.say(texto)
