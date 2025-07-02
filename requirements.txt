@@ -1,0 +1,8 @@
+pyttsx3
+google-generativeai
+colorama
+elevenlabs
+numpy 
+sounddevice 
+pygetwindow
+pywin32
